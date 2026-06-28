@@ -441,11 +441,11 @@ const GoalWise = () => {
 
     return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-3xl p-6 w-full max-w-md">
+      <div className={`${isDarkMode ? 'bg-gray-900/95 backdrop-blur-xl border border-gray-700' : 'bg-white/95 backdrop-blur-xl border border-white/20'} rounded-3xl p-6 w-full max-w-md`}>
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Add Funds</h2>
-          <button onClick={() => setShowAddFundsModal(false)} className="p-2 hover:bg-gray-100 rounded-full">
-            <X className="w-5 h-5" />
+          <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Add Funds</h2>
+          <button onClick={() => setShowAddFundsModal(false)} className={`p-2 rounded-full ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}>
+            <X className={`w-5 h-5 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} />
           </button>
         </div>
 
@@ -453,19 +453,19 @@ const GoalWise = () => {
           <div className={`w-16 h-16 bg-gradient-to-br ${selectedGoal?.color} rounded-2xl flex items-center justify-center text-3xl mx-auto mb-3`}>
             {selectedGoal?.icon}
           </div>
-          <h3 className="text-lg font-bold text-gray-800">{selectedGoal?.name}</h3>
+          <h3 className={`text-lg font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{selectedGoal?.name}</h3>
           <p className="text-sm text-gray-500">Current: ${selectedGoal?.current.toLocaleString()} / ${selectedGoal?.target.toLocaleString()}</p>
         </div>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Amount to Add ($) <span className="text-red-500">* <sup>(required)</sup></span></label>
+            <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>Amount to Add ($) <span className="text-red-500">* <sup>(required)</sup></span></label>
             <input
               required
               type="number"
               value={addFundsAmount}
               onChange={(e) => setAddFundsAmount(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className={`w-full p-3 border rounded-xl focus:ring-2 focus:border-transparent ${isDarkMode ? 'bg-gray-800/50 text-white border-gray-600 placeholder-gray-400 focus:ring-blue-400' : 'bg-white/50 border-gray-300 text-gray-800 placeholder-gray-500 focus:ring-blue-500'} backdrop-blur-sm transition-all`}
               placeholder="500"
             />
           </div>
@@ -474,7 +474,7 @@ const GoalWise = () => {
         <div className="flex gap-3 mt-6">
           <button
             onClick={() => setShowAddFundsModal(false)}
-            className="flex-1 py-3 px-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all"
+            className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all ${isDarkMode ? 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} backdrop-blur-sm`}
           >
             Cancel
           </button>
@@ -519,49 +519,49 @@ const GoalWise = () => {
     
     return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-3xl p-6 w-full max-w-md">
+      <div className={`${isDarkMode ? 'bg-gray-900/95 backdrop-blur-xl border border-gray-700' : 'bg-white /95 backdrop-blur-xl border border-white/20'} rounded-3xl p-6 w-full max-w-md`}>
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Link Account</h2>
-          <button onClick={() => setShowLinkAccountModal(false)} className="p-2 hover:bg-gray-100 rounded-full">
-            <X className="w-5 h-5" />
+          <h2 className={`text-2xl font-bold  ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Link Account</h2>
+          <button onClick={() => setShowLinkAccountModal(false)} className={`p-2 rounded-full transition-all ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}>
+            <X className={`w-5 h-5 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} />
           </button>
         </div>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Account Name <span className="text-red-500">* <sup>(required)</sup></span></label>
+            <label className={`block text-sm font-medium  ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>Account Name <span className="text-red-500">* <sup>(required)</sup></span></label>
             <input
               required
               type="text"
               value={linkAccountData.name}
               onChange={(e) => setLinkAccountData({ ...linkAccountData, name: e.target.value })}
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className={`w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent ${isDarkMode ? 'bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-400' : 'bg-white/50 border-gray-300 text-gray-800 placeholder-gray-500 focus:ring-blue-500'} border rounded-xl backdrop-blur-sm transition-all`}
               placeholder="e.g., Chase Checking"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Account Type</label>
+            <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>Account Type</label>
             <select
               value={linkAccountData.type}
               onChange={(e) => setLinkAccountData({ ...linkAccountData, type: e.target.value })}
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className={`w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent ${isDarkMode ? 'bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-400' : 'bg-white/50 border-gray-300 text-gray-800 placeholder-gray-500 focus:ring-blue-500'} border rounded-xl backdrop-blur-sm transition-all`}
             >
-              <option value="bank">Bank Account</option>
-              <option value="credit">Credit Card</option>
-              <option value="digital">Digital Wallet</option>
+              <option className={`${isDarkMode ? 'bg-gray-900 border-gray-600 text-white' : ''}`} value="bank">Bank Account</option>
+              <option className={`${isDarkMode ? 'bg-gray-900 border-gray-600 text-white' : ''}`} value="credit">Credit Card</option>
+              <option className={`${isDarkMode ? 'bg-gray-900 border-gray-600 text-white' : ''}`} value="digital">Digital Wallet</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Current Balance ($) <span className="text-red-500">* <sup>(required)</sup></span></label>
+            <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>Current Balance ($) <span className="text-red-500">* <sup>(required)</sup></span></label>
             <input
               required
               type="number"
               step="0.01"
               value={linkAccountData.balance}
               onChange={(e) => setLinkAccountData({ ...linkAccountData, balance: e.target.value })}
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className={`w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent ${isDarkMode ? 'bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-400' : 'bg-white/50 border-gray-300 text-gray-800 placeholder-gray-500 focus:ring-blue-500'} border rounded-xl backdrop-blur-sm transition-all`}
               placeholder="3240.50"
             />
           </div>
@@ -570,7 +570,7 @@ const GoalWise = () => {
         <div className="flex gap-3 mt-6">
           <button
             onClick={() => setShowLinkAccountModal(false)}
-            className="flex-1 py-3 px-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all"
+            className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all ${isDarkMode ? 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
           >
             Cancel
           </button>
@@ -710,11 +710,11 @@ const GoalWise = () => {
 
   const ScenariosModal = () => (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-3xl p-6 w-full max-w-md">
+      <div className={`rounded-3xl p-6 w-full max-w-md ${isDarkMode ? 'bg-gray-900/95 backdrop-blur-xl border border-gray-700' : 'bg-white/95 backdrop-blur-xl border border-white/20'}`}>
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">What-If Scenarios</h2>
-          <button onClick={() => setShowScenariosModal(false)} className="p-2 hover:bg-gray-100 rounded-full">
-            <X className="w-5 h-5" />
+          <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>What-If Scenarios</h2>
+          <button onClick={() => setShowScenariosModal(false)} className={`p-2 rounded-full ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}>
+            <X className={`w-5 h-5 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} />
           </button>
         </div>
 
@@ -993,7 +993,7 @@ const GoalWise = () => {
       </div>
 
       <div>
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Quick Actions</h2>
+        <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'} mb-4`}>Quick Actions</h2>
         <div className="grid grid-cols-2 gap-3">
           <button onClick={() => setShowAddGoalModal(true)} className="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all">
             <Plus className="w-6 h-6 mb-2" />
@@ -1008,12 +1008,12 @@ const GoalWise = () => {
 
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-gray-800">Recent Activity</h2>
+          <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Recent Activity</h2>
           <button onClick={() => setActiveScreen('accounts')} className="text-blue-600 text-sm font-semibold">View All</button>
         </div>
-        <div className="bg-white rounded-2xl shadow-md divide-y">
+        <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-2xl shadow-md divide-y overflow-hidden`}>
           {transactions.slice(0, 3).map((tx, i) => (
-            <div key={i} className="p-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+            <div key={i} className={`p-4 flex justify-between items-center ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300'} transition-colors`}>
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${tx.type === 'income' ? 'bg-green-100' :
                     tx.type === 'subscription' ? 'bg-purple-100' :
@@ -1027,11 +1027,11 @@ const GoalWise = () => {
                     }`} />
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800">{tx.name}</p>
-                  <p className="text-xs text-gray-500">{tx.category} • {tx.date}</p>
+                  <p className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>{tx.name}</p>
+                  <p className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`}>{tx.category} • {tx.date}</p>
                 </div>
               </div>
-              <p className={`font-bold ${tx.amount > 0 ? 'text-green-600' : 'text-gray-800'}`}>
+              <p className={`font-bold ${tx.amount > 0 ? 'text-green-600' : isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
                 {tx.amount > 0 ? '+' : ''}{tx.amount < 0 ? '-' : ''}${Math.abs(tx.amount).toFixed(2)}
               </p>
             </div>
@@ -1044,7 +1044,7 @@ const GoalWise = () => {
   const AccountsScreen = () => (
     <div className="space-y-6 pb-24">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Accounts</h1>
+        <h1 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Accounts</h1>
         <button onClick={() => setShowLinkAccountModal(true)} className="bg-blue-600 text-white px-4 py-2 rounded-xl font-semibold flex items-center gap-2 hover:bg-blue-700 transition-all">
           <Plus className="w-4 h-4" /> Link Account
         </button>
@@ -1054,22 +1054,22 @@ const GoalWise = () => {
         {accounts.map((account, i) => {
           const IconComponent = getIcon(account.icon);
           return (
-            <div key={i} className="bg-white rounded-2xl p-4 shadow-md hover:shadow-lg transition-all">
+            <div key={i} className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-2xl p-4 shadow-md hover:shadow-lg transition-all`}>
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
                   <div className={`${account.color} w-12 h-12 rounded-xl flex items-center justify-center text-white`}>
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800">{account.name}</h3>
-                    <p className="text-xs text-gray-500 capitalize">{account.type} Account</p>
+                    <h3 className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>{account.name}</h3>
+                    <p className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-500'} capitalize`}>{account.type} Account</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className={`font-bold text-lg ${account.balance < 0 ? 'text-red-600' : 'text-gray-800'}`}>
+                  <p className={`font-bold text-lg ${account.balance < 0 ? 'text-red-600' :  isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
                     {account.balance < 0 ? '-' : ''}${Math.abs(account.balance).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </p>
-                  <p className="text-xs text-gray-500">Available</p>
+                  <p className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`}>Available</p>
                 </div>
               </div>
             </div>
@@ -1078,10 +1078,10 @@ const GoalWise = () => {
       </div>
 
       <div>
-        <h2 className="text-xl font-bold text-gray-800 mb-4">All Transactions</h2>
-        <div className="bg-white rounded-2xl shadow-md divide-y">
+        <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'} mb-4`}>All Transactions</h2>
+        <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-2xl shadow-md divide-y overflow-hidden`}>
           {transactions.map((tx, i) => (
-            <div key={i} className="p-4 flex justify-between items-center hover:bg-gray-50 transition-colors cursor-pointer">
+            <div key={i} className={`p-4 flex justify-between items-center ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300'} transition-colors cursor-pointer`}>
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${tx.type === 'income' ? 'bg-green-100' :
                     tx.type === 'subscription' ? 'bg-purple-100' :
@@ -1095,15 +1095,15 @@ const GoalWise = () => {
                           <DollarSign className="w-5 h-5 text-gray-600" />}
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800">{tx.name}</p>
+                  <p className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>{tx.name}</p>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-500">{tx.category}</span>
-                    <span className="text-xs text-gray-400">•</span>
-                    <span className="text-xs text-gray-500">{tx.date}</span>
+                    <span className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`}>{tx.category}</span>
+                    <span className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`}>•</span>
+                    <span className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`}>{tx.date}</span>
                   </div>
                 </div>
               </div>
-              <p className={`font-bold ${tx.amount > 0 ? 'text-green-600' : 'text-gray-800'}`}>
+              <p className={`font-bold ${tx.amount > 0 ? 'text-green-600' :  isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
                 {tx.amount > 0 ? '+' : ''}{tx.amount < 0 ? '-' : ''}${Math.abs(tx.amount).toFixed(2)}
               </p>
             </div>
@@ -1116,7 +1116,7 @@ const GoalWise = () => {
   const GoalsScreen = () => (
     <div className="space-y-6 pb-24">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Financial Goals</h1>
+        <h1 className={`text-2xl font-bold  ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Financial Goals</h1>
         <button onClick={() => setShowAddGoalModal(true)} className="bg-blue-600 text-white px-4 py-2 rounded-xl font-semibold flex items-center gap-2 hover:bg-blue-700 transition-all">
           <Plus className="w-4 h-4" /> New Goal
         </button>
@@ -1136,15 +1136,15 @@ const GoalWise = () => {
 
       <div className="space-y-4">
         {goals.map(goal => (
-          <div key={goal.id} onClick={() => { setSelectedGoal(goal); setActiveScreen('goalDetail'); }} className="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition-all cursor-pointer">
+          <div key={goal.id} onClick={() => { setSelectedGoal(goal); setActiveScreen('goalDetail'); }} className={`rounded-2xl p-5 shadow-md hover:shadow-lg transition-all cursor-pointer ${isDarkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-800'}`}>
             <div className="flex justify-between items-start mb-4">
               <div className="flex items-center gap-3">
                 <div className={`w-14 h-14 bg-gradient-to-br ${goal.color} rounded-xl flex items-center justify-center text-3xl shadow-lg`}>
                   {goal.icon}
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800 text-lg">{goal.name}</h3>
-                  <p className="text-sm text-gray-500">${goal.current.toLocaleString()} of ${goal.target.toLocaleString()}</p>
+                  <h3 className={`font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'} text-lg`}>{goal.name}</h3>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>${goal.current.toLocaleString()} of ${goal.target.toLocaleString()}</p>
                 </div>
               </div>
               <span className="text-sm bg-green-100 text-green-700 px-3 py-1.5 rounded-full font-bold">
@@ -1157,17 +1157,17 @@ const GoalWise = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-3 mt-4">
-              <div className="bg-gray-50 rounded-lg p-2">
-                <p className="text-xs text-gray-500">Monthly</p>
-                <p className="font-bold text-gray-800">${goal.monthly}</p>
+              <div className={` ${isDarkMode ? 'bg-gray-700' : 'bg-gray-50'} rounded-lg p-2`}>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Monthly</p>
+                <p className={`font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>${goal.monthly}</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-2">
-                <p className="text-xs text-gray-500">Remaining</p>
-                <p className="font-bold text-gray-800">${(goal.target - goal.current).toLocaleString()}</p>
+              <div className={` ${isDarkMode ? 'bg-gray-700' : 'bg-gray-50'} rounded-lg p-2`}>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Remaining</p>
+                <p className={`font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>${(goal.target - goal.current).toLocaleString()}</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-2">
-                <p className="text-xs text-gray-500">ETA</p>
-                <p className="font-bold text-gray-800">{Math.ceil((goal.target - goal.current) / goal.monthly)}mo</p>
+              <div className={` ${isDarkMode ? 'bg-gray-700' : 'bg-gray-50'} rounded-lg p-2`}>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>ETA</p>
+                <p className={`font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>{Math.ceil((goal.target - goal.current) / goal.monthly)}mo</p>
               </div>
             </div>
           </div>
@@ -1175,6 +1175,12 @@ const GoalWise = () => {
       </div>
     </div>
   );
+
+  const getTargetDate = (monthsRemaining) => {
+    const currentDate = new Date();
+    currentDate.setMonth(currentDate.getMonth() + monthsRemaining);
+    return currentDate.toLocaleString('default', { month: 'short', year: 'numeric' });
+  }
 
   const GoalDetailScreen = () => {
     const [selectedGoalState, setSelectedGoalState] = useState(goals.find(g => g.id === selectedGoal.id));
@@ -1228,7 +1234,7 @@ const GoalWise = () => {
         </div>
 
         <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Smart Suggestions</h2>
+          <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'} mb-4`}>Smart Suggestions</h2>
           <div className="space-y-3">
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-4">
               <div className="flex items-start gap-3">
@@ -1249,7 +1255,7 @@ const GoalWise = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">On Track</h3>
-                  <p className="text-sm text-gray-600">You're saving consistently! Keep it up to reach your goal by Jun 2026</p>
+                  <p className="text-sm text-gray-600">You're saving consistently! Keep it up to reach your goal by {getTargetDate(monthsRemaining)}</p>
                 </div>
               </div>
             </div>
@@ -1257,13 +1263,13 @@ const GoalWise = () => {
         </div>
 
         <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Recent Contributions</h2>
-          <div className="bg-white rounded-2xl shadow-md divide-y">
+          <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'} mb-4`}>Recent Contributions</h2>
+          <div className={`rounded-2xl shadow-md divide-y ${isDarkMode ? 'bg-gray-800 border' : 'bg-white'}`}>
             {selectedGoalState.contributions.map((contribution, i) => (
               <div key={i} className="p-4 flex justify-between items-center">
                 <div>
-                  <p className="font-semibold text-gray-800">Manual Contribution</p>
-                  <p className="text-xs text-gray-500">{contribution.date}</p>
+                  <p className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>Manual Contribution</p>
+                  <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{contribution.date}</p>
                 </div>
                 <p className="font-bold text-green-600">+${contribution.amount}</p>
               </div>
@@ -1285,7 +1291,7 @@ const GoalWise = () => {
 
   const BillsScreen = () => (
     <div className="space-y-6 pb-24">
-      <h1 className="text-2xl font-bold text-gray-800">Bills & Credit</h1>
+      <h1 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Bills & Credit</h1>
 
       <div className="bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-3xl p-6 text-white shadow-xl">
         <div className="flex justify-between items-start mb-4">
@@ -1307,17 +1313,17 @@ const GoalWise = () => {
       </div>
 
       <div>
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Upcoming Bills</h2>
+        <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'} mb-4`}>Upcoming Bills</h2>
         <div className="space-y-3">
           {upcomingBills.map((bill, i) => (
-            <div key={i} className={`bg-white rounded-2xl p-4 shadow-md border-2 ${bill.status === 'paid' ? 'border-green-200 bg-green-50' : 'border-orange-200'}`}>
+            <div key={i} className={`rounded-2xl p-4 shadow-md border-2 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white'} ${bill.status === 'paid' ? `${isDarkMode ? 'border-green-700 bg-green-900' : 'border-green-200 bg-green-50'}` : `${isDarkMode ? 'border-orange-700' : 'border-orange-200'}`}`}>
               <div className="flex justify-between items-start mb-3">
                 <div>
-                  <h3 className="font-bold text-gray-800">{bill.name}</h3>
-                  <p className="text-sm text-gray-500">Due {bill.dueDate}</p>
+                  <h3 className={`font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{bill.name}</h3>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Due {bill.dueDate}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-lg text-gray-800">${bill.amount.toFixed(2)}</p>
+                  <p className={`font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>${bill.amount.toFixed(2)}</p>
                   {bill.status === 'paid' ? (
                     <span className="text-xs bg-green-600 text-white px-2 py-1 rounded-full font-medium inline-flex items-center gap-1">
                       <CheckCircle className="w-3 h-3" /> Paid
@@ -1353,19 +1359,19 @@ const GoalWise = () => {
 
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-gray-800">Active Subscriptions</h2>
+          <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Active Subscriptions</h2>
           <button onClick={() => setActiveScreen('subscriptions')} className="text-blue-600 text-sm font-semibold">View All</button>
         </div>
-        <div className="bg-white rounded-2xl shadow-md p-4">
+        <div className={`rounded-2xl shadow-md p-4 ${isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'}`}>
           <div className="flex justify-between items-center mb-3">
-            <p className="text-gray-600">Total Monthly Cost</p>
-            <p className="text-2xl font-bold text-gray-800">${subscriptions.reduce((sum, sub) => sum + sub.amount, 0).toFixed(2)}</p>
+            <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Total Monthly Cost</p>
+            <p className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>${subscriptions.reduce((sum, sub) => sum + sub.amount, 0).toFixed(2)}</p>
           </div>
           <div className="space-y-2">
             {subscriptions.slice(0, 3).map((sub, i) => (
               <div key={i} className="flex justify-between items-center text-sm">
-                <span className="text-gray-600">{sub.name}</span>
-                <span className="font-semibold text-gray-800">${sub.amount}</span>
+                <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{sub.name}</span>
+                <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>${sub.amount}</span>
               </div>
             ))}
           </div>
@@ -1376,7 +1382,7 @@ const GoalWise = () => {
 
   const SubscriptionsScreen = () => (
     <div className="space-y-6 pb-24">
-      <h1 className="text-2xl font-bold text-gray-800">Subscriptions</h1>
+      <h1 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Subscriptions</h1>
 
       <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl p-5 text-white shadow-xl">
         <h3 className="font-semibold mb-2">Total Monthly Spend</h3>
@@ -1397,22 +1403,22 @@ const GoalWise = () => {
       </div>
 
       <div>
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Active Subscriptions</h2>
+        <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'} mb-4`}>Active Subscriptions</h2>
         <div className="space-y-3">
           {subscriptions.map((sub, i) => (
-            <div key={i} className="bg-white rounded-2xl p-4 shadow-md hover:shadow-lg transition-all">
+            <div key={i} className={`rounded-2xl p-4 shadow-md hover:shadow-lg transition-all ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  <h3 className="font-bold text-gray-800">{sub.name}</h3>
-                  <p className="text-xs text-gray-500">{sub.category}</p>
+                  <h3 className={`font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{sub.name}</h3>
+                  <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{sub.category}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-lg text-gray-800">${sub.amount}</p>
-                  <p className="text-xs text-gray-500">per month</p>
+                  <p className={`font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>${sub.amount}</p>
+                  <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>per month</p>
                 </div>
               </div>
-              <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-100">
-                <p className="text-xs text-gray-500">Next billing: {sub.nextBill}</p>
+              <div className={`flex justify-between items-center mt-3 pt-3 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-100'}`}>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Next billing: {sub.nextBill}</p>
                 <button onClick={() => handleCancelSubscription(sub.id)} className="text-xs text-red-600 font-semibold hover:text-red-700">Cancel</button>
               </div>
             </div>
@@ -1645,12 +1651,12 @@ const GoalWise = () => {
               <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-2`}>6-Month Financial Trends</p>
             </div>
 
-            <div className="relative h-64 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4">
-              <svg className="w-full h-full" viewBox="0 0 400 200">
+            <div className={`relative h-64 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg p-4`}>
+              <svg className="w-full h-full" viewBox="0 0 400.5 200.5">
                 {/* Grid lines */}
                 <defs>
                   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#E5E7EB" strokeWidth="0.5" />
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke={ `${isDarkMode ? '#E5E7EB' : '#374151'}`} strokeWidth="0.5" />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#grid)" />
@@ -1700,18 +1706,18 @@ const GoalWise = () => {
               </svg>
 
               {/* Legend */}
-              <div className="absolute top-4 right-4 space-y-2">
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-full grid grid-cols-3 justify-items-center">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <span className="text-xs font-medium text-gray-700">Spending</span>
+                  <span className={`text-xs font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Spending</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-xs font-medium text-gray-700">Income</span>
+                  <span className={`text-xs font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Income</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span className="text-xs font-medium text-gray-700">Savings</span>
+                  <span className={`text-xs font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Savings</span>
                 </div>
               </div>
             </div>
@@ -1720,17 +1726,17 @@ const GoalWise = () => {
               <div className="text-center">
                 <p className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Spending Trend</p>
                 <p className="font-bold text-red-500">↓ Decreasing</p>
-                <p className="text-xs text-gray-500">-8.3% avg</p>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>-8.3% avg</p>
               </div>
               <div className="text-center">
                 <p className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Income Trend</p>
                 <p className="font-bold text-green-500">↑ Increasing</p>
-                <p className="text-xs text-gray-500">+1.3% avg</p>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>+1.3% avg</p>
               </div>
               <div className="text-center">
                 <p className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Savings Trend</p>
                 <p className="font-bold text-blue-500">↑ Improving</p>
-                <p className="text-xs text-gray-500">+11.1% avg</p>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>+11.1% avg</p>
               </div>
             </div>
           </div>
@@ -1987,7 +1993,7 @@ const GoalWise = () => {
 
   return (
     <div className={`min-h-screen transition-all duration-300 ${isDarkMode ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-br from-gray-50 to-blue-50'}`}>
-      <div className={`max-w-md mx-auto min-h-screen relative transition-all duration-300 ${isDarkMode ? 'bg-gray-900/50 backdrop-blur-sm' : 'bg-gray-50'}`}>
+      <div className={`max-w-md mx-auto min-h-screen relative transition-all duration-300 ${isDarkMode ? 'bg-gray-900/50' : 'bg-gray-50'}`}>
         <div className="p-6">
           {renderScreen()}
         </div>
